@@ -1,0 +1,252 @@
+<app-ads-search [Locations]="Locations" [Categories]="Categories" ></app-ads-search>
+      <!-- Search Area End Here -->
+      <!-- Product Area Start Here -->
+      <section class="s-space-bottom-full bg-accent-shadow-body">
+          <!-- <div class="container">
+              <div class="breadcrumbs-area">
+                  <ul>
+                      <li><a [routerLink]='["/"]'>Home</a> -</li>
+                      <li><a [routerLink]='["/Ads"]'>Electronics</a> -</li>
+                      <li class="active">Computer</li>
+                  </ul>
+              </div>
+          </div> -->
+          <div class="container">
+              <div class="row">
+                  <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
+                      <div class="gradient-wrapper item-mb">
+                          <div class="gradient-title">
+                              <h2>{{item.Title}}</h2>
+                          </div>
+                          <div class="gradient-padding reduce-padding">
+                              <div class="single-product-img-layout1 item-mb">
+                                  <div class="row">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                          <div class="tab-content" >
+                                              <span class="price">{{API.Gv.currencyFormat(item.Price)}}</span>
+                                              <div *ngFor="let ItemImg of item.Images;let i =index;" role="tabpanel" class="tab-pane fade" [ngClass]="{'active show':('img'+(i+1))==selectedImg}" id="related{{i}}">
+                                                  <a href="javascript:void(0)" class="zoom ex1">
+                                                    <img alt="single" [src]="API.Gv.ImgPath(ItemImg,'assets/img/product/single-product1.jpg')" class="img-fluid" [attr.data-zoom-image]="API.Gv.ImgPath(ItemImg)">
+                                                  </a>
+                                              </div>
+
+                                              <!-- <div role="tabpanel" class="tab-pane fade" id="related2">
+                                                  <a href="javascript:void(0)" class="zoom ex1"><img alt="single" src="assets/img/product/single-product2.jpg" class="img-fluid"></a>
+                                              </div>
+                                              <div role="tabpanel" class="tab-pane fade" id="related3">
+                                                  <a href="javascript:void(0)" class="zoom ex1"><img alt="single" src="assets/img/product/single-product3.jpg" class="img-fluid"></a>
+                                              </div>
+                                              <div role="tabpanel" class="tab-pane fade" id="related4">
+                                                  <a href="javascript:void(0)" class="zoom ex1"><img alt="single" src="assets/img/product/single-product4.jpg" class="img-fluid"></a>
+                                              </div>
+                                              <div role="tabpanel" class="tab-pane fade" id="related5">
+                                                  <a href="javascript:void(0)" class="zoom ex1"><img alt="single" src="assets/img/product/single-product5.jpg" class="img-fluid"></a>
+                                              </div>
+                                              <div role="tabpanel" class="tab-pane fade" id="related6">
+                                                  <a href="javascript:void(0)" class="zoom ex1"><img alt="single" src="assets/img/product/single-product6.jpg" class="img-fluid"></a>
+                                              </div> -->
+
+                                          </div>
+
+                                      </div>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <ul class="nav tab-nav tab-nav-inline cp-carousel nav-control-middle" >
+                                        <owl-carousel *ngIf="item.Images" [options]="adsOWL" [carouselClasses]="['owl-carousel','owl-theme']" style="display: inline-block;width: 100%;">
+
+                                              <li class="nav-item" *ngFor="let ItemImg of item.Images;let i =index;" (click)="selectedImg='img'+(i+1)">
+                                                    <a class="active" href="{{'#related'+(i+1)}}" data-toggle="tab" aria-expanded="false"><img alt="related1" [src]="API.Gv.ImgPath(ItemImg,'assets/img/product/single-product'+(i+1)+'.jpg')" class="img-fluid"></a>
+                                                </li>
+                                                <!-- <li class="nav-item">
+                                                    <a href="#related2" data-toggle="tab" aria-expanded="false"><img alt="related2" src="assets/img/product/single-product2.jpg" class="img-fluid"></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#related3" data-toggle="tab" aria-expanded="false"><img alt="related3" src="assets/img/product/single-product3.jpg" class="img-fluid"></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#related4" data-toggle="tab" aria-expanded="false"><img alt="related4" src="assets/img/product/single-product4.jpg" class="img-fluid"></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#related5" data-toggle="tab" aria-expanded="false"><img alt="related5" src="assets/img/product/single-product5.jpg" class="img-fluid"></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#related6" data-toggle="tab" aria-expanded="false"><img alt="related6" src="assets/img/product/single-product6.jpg" class="img-fluid"></a>
+                                                </li> -->
+
+                                        </owl-carousel>
+                                      </ul>
+
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="section-title-left-dark child-size-xl title-bar item-mb">
+                                  <h3>Product Details:</h3>
+                                  <p>{{item.Description}}</p>
+                              </div>
+                              <div class="section-title-left-dark child-size-xl" *ngIf="item.Specifications?.length > 0">
+                                  <h3>Item Specifics:</h3>
+                              </div>
+                              <ul class="specification-layout1 mb-40">
+                                <li *ngFor="let Spec of item.Specifications;let i2 =index;" class="Specifications">{{Spec.label+' : '+Spec.val}} </li>
+                              </ul>
+                              <ul class="item-actions border-top">
+                                  <li (click)="SaveAd(item._id,false)"><a href="javascript:void(0)"><i style="font-size: 16px;" class="fa fa-heart" [ngClass]="{'red':API.Gv.Favs.includes(item._id)}" aria-hidden="true"></i>Save Ad</a></li>
+                                  <!-- <li><a href="javascript:void(0)"><i class="fa fa-share-alt" aria-hidden="true"></i>Share ad</a></li> -->
+                                  <!-- <li class="item-danger"><a href="javascript:void(0)"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Report abuse</a></li> -->
+                                  <li><share-button button="facebook" theme="circles-dark" text="{{item.Title}}"  title="{{item.Title}}" description="{{item.Title}}" ></share-button></li>
+                                  <li><share-button button="twitter" theme="circles-dark" title="{{item.Title}}" description="{{item.Title}}" ></share-button></li><!-- description="{{item.Title}}" text="{{item.Title}}" -->
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="gradient-wrapper item-mb">
+                          <div class="gradient-title">
+                              <h2>More Ads From This User </h2>
+                          </div>
+                          <div class="gradient-padding">
+                              <div class="cp-carousel nav-control-middle category-grid-layout1" >
+                                <p *ngIf="!MoreAds || MoreAds.length == 0" class="NoItemsFound" style="margin: 0;padding: 10px;">No Items Found</p>
+
+                                <owl-carousel *ngIf="MoreAds" [options]="ads2OWL" [carouselClasses]="['owl-carousel','owl-theme']">
+                                  <app-product *ngFor="let item of MoreAds;let i =index;" [item]="item" [BoxType]="'small'"></app-product>
+
+                                  <!-- <div class="product-box" *ngFor="let item of MoreAds;let i =index;">
+                                      <div class="item-mask-wrapper">
+                                          <div class="item-mask secondary-bg-box"><img [src]="API.Gv.ImgPath(item.Images[0],'assets/img/product/product6.png')" class="img-fluid prod-img">
+                                              <div class="trending-sign" data-tips="Featured"> <i class="fa fa-bolt" aria-hidden="true"></i> </div>
+                                              <div class="title-ctg">{{item.Category?.name}}</div>
+                                              <ul class="info-link">
+                                                  <li><a href="javascript:void(0)" class="elv-zoom" data-fancybox-group="gallery" title="Title Here"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+                                                  <li><a href="single-product-layout3.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
+                                              </ul>
+                                              <div class="symbol-featured"><img src="assets/img/banner/symbol-featured.png" alt="symbol" class="img-fluid"> </div>
+                                          </div>
+                                      </div>
+                                      <div class="item-content">
+                                          <div class="title-ctg">Clothing</div>
+                                          <h3 class="short-title"><a [routerLink]='["/Ad",item._id]'>{{item.Title| strLimit:45}}</a></h3>
+                                          <h3 class="long-title"><a [routerLink]='["/Ad",item._id]'>Men's Classic Sport Watch with Black Band</a></h3>
+                                          <ul class="upload-info">
+                                              <li class="date"><i class="fa fa-clock-o" aria-hidden="true"></i>{{API.Gv.Dformat(item.createdAt)}}</li>
+                                              <li class="place"><i class="fa fa-map-marker" aria-hidden="true"></i>{{item.Location?.name}}</li>
+                                              <li class="tag-ctg"><i class="fa fa-tag" aria-hidden="true"></i>{{item.Category?.name}}</li>
+                                          </ul>
+                                          <p>Eimply dummy text of the printing and typesetting industrym has been the industry's standard dummy.</p>
+                                          <div class="price">{{API.Gv.currencyFormat(item.Price)}}</div>
+                                          <a [routerLink]='["/Ad",item._id]' class="product-details-btn">Details</a>
+                                      </div>
+                                  </div> -->
+                                </owl-carousel>
+
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row no-gutters">
+                          <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                              <div class="add-layout2-left d-flex align-items-center">
+                                  <div>
+                                      <h2>Do you Have Something To Sell?</h2>
+                                      <h3>Post your ad on classipost.com</h3>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                              <div class="add-layout2-right d-flex align-items-center justify-content-end mb--sm">
+                                  <a href="javascript:void(0)" class="cp-default-btn-sm-primary">Post Your Ad Now!</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+                      <div class="sidebar-item-box">
+                          <div class="gradient-wrapper">
+                              <div class="gradient-title">
+                                  <h3>Seller Information</h3>
+                              </div>
+                              <ul class="sidebar-seller-information">
+                                  <li>
+                                      <div class="media">
+                                          <img src="assets/img/user/user1.png" alt="user" class="img-fluid pull-left">
+                                          <div class="media-body">
+                                              <span>Posted By</span>
+                                              <h4>{{item.userInfo?.Name}}</h4>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="media">
+                                          <img src="assets/img/user/user2.png" alt="user" class="img-fluid pull-left">
+                                          <div class="media-body">
+                                              <span>Location</span>
+                                              <h4>{{item.Location?.Country?.name}} , {{item.Location?.name}}</h4>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="media">
+                                          <img src="assets/img/user/user3.png" alt="user" class="img-fluid pull-left">
+                                          <div class="media-body">
+                                              <span>Contact Number</span>
+                                              <h4>{{item.userInfo?.Phone}}</h4>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="media">
+                                        <i class="fa fa-info-circle pull-left" style="color: blue;font-size: 30px;padding: 6px;"></i>
+                                          <div class="media-body">
+                                              <span>Status</span>
+                                              <h4>{{item.type}}</h4>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="media">
+                                        <i class="fa fa-check-circle pull-left" style="color: green;font-size: 30px;padding: 6px;"></i>
+                                          <div class="media-body">
+                                              <span>User Type</span>
+                                              <h4>Verified</h4>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="sidebar-item-box">
+                          <div class="gradient-wrapper">
+                              <div class="gradient-title">
+                                  <h3>Item Details</h3>
+                              </div>
+                              <ul class="sidebar-item-details">
+                                  <li>Condition:<span>New</span></li>
+                                  <li>Brand:<span>Apple</span></li>
+                                  <li>Color:<span>White</span></li>
+                                  <li>Warranty:<span>1 Year</span></li>
+                                  <li>
+                                      <ul class="sidebar-social">
+                                          <li>Share:</li>
+                                          <li><a href="javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                          <li><a href="javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                          <li><a href="javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                          <li><a href="javascript:void(0)"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="sidebar-item-box">
+                          <div class="gradient-wrapper">
+                              <div class="gradient-title">
+                                  <h3>Safety Tips for Buyers</h3>
+                              </div>
+                              <ul class="sidebar-safety-tips">
+                                  <li>Meet seller at a public place</li>
+                                  <li>Check The item before you buy</li>
+                                  <li>Pay only after collecting The item</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Product Area End Here -->

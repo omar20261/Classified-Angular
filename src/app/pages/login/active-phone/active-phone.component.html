@@ -1,0 +1,27 @@
+<!-- Modal Start-->
+  <div class="modal fade" id="ActivePhoneModal" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content" style="min-width: 450px;">
+              <div class="modal-header block">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <div class="title-default-bold mb-none">Phone Activation</div>
+              </div>
+              <div class="modal-body">
+                <div class="login-form" *ngIf="tab=='tab1'">
+                  <form>
+                    <input type="text" placeholder="Enter your Phone" [(ngModel)]="item.Phone" name="Phone" />
+                    <button class="btn btn-info" type="submit" (click)="send()"> Send Code</button>
+                  </form>
+                </div>
+                <div class="login-form" *ngIf="tab=='tab2'">
+                  <form>
+                    <b>check your phone no. {{item?.Phone}} </b>
+                    <input type="text" placeholder="Code" [(ngModel)]="item.Code" name="Code" />
+                    <button class="btn btn-default" type="submit" (click)="tab='tab1'">  Back</button>
+                    <button class="btn btn-primary" type="submit" (click)="Active()">  Active </button>
+                  </form>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,22 @@
+<div class="image-container" draggable="true" (dragstart)="drag($event)" (drop)="drop($event)" (dragover)="allowDrop($event)">
+  <div class="image-Form fullheight" *ngIf="IsImg">
+    <!--<div class="removeImg"><i class="fa fa-remove"></i></div>-->
+    <label class="pre-img" for="ChoseImg{{name+(ind?ind:'')}}">
+      <span *ngIf="getItem()" style="background: rgba(255,255,255,0.8);padding: 2px 5px;" class="fa fa-remove remove" (click)="remove($event)"></span>
+      <div *ngIf="!imgPath() && !defaultImg" class="div-plus"><i class="fa" [ngClass]="{'fa-gear fa-spin':loading,'fa-plus':!loading}"></i></div>
+      <img *ngIf="!imgPath() && defaultImg" class="pre-img" [src]="defaultImg">
+      <img *ngIf="imgPath()" class="pre-img" [src]="imgPath()">
+    </label>
+    <input id="ChoseImg{{name+(ind?ind:'')}}" type="file" accept="{{accept}}" (change)="changeTo64($event.target.files)" style="display: none;" >
+    <!--<label for="ChoseImg" class="btn btn-block btn-md btn-default ">Upload</label>-->
+  </div>
+
+  <div *ngIf="!IsImg">
+    <label *ngIf="innerBtn" class="upload-sm-btn" for="File{{name}}"><i class="fa" [ngClass]="{'fa-gear fa-spin':loading,'fa-camera':!loading}"></i></label>
+
+    <label class="btn btn-info" *ngIf="!item[name] && !innerBtn" for="File{{name}}">Upload</label>
+    <label class="btn btn-success" *ngIf="item[name] && !innerBtn" for="File{{name}}">Change</label>
+    <input id="File{{name+(ind?ind:'')}}" type="file" accept="{{accept}}" (change)="changeTo64($event.target.files)" style="display: none;" >
+  </div>
+
+</div>

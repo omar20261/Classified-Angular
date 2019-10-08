@@ -1,0 +1,47 @@
+<!-- <div class="product-box item-mb zoom-gallery">
+    <div class="item-mask-wrapper">
+        <div class="item-mask bg-body"><img [src]="API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')" class="img-fluid prod-img">
+            <div class="trending-sign" data-tips="Featured"> <i class="fa fa-bolt" aria-hidden="true"></i> </div>
+            <div class="title-ctg">Electronics</div>
+            <ul class="info-link">
+                <li><a href="{{API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')}}" class="elv-zoom" data-fancybox-group="gallery" data-effect="mfp-zoom-in" title="{{item.Title| strLimit:45}}"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+                <li><a  [routerLink]='["/Ad",item._id]'><i class="fa fa-link" aria-hidden="true"></i></a></li>
+            </ul>
+            <div class="symbol-featured"><img src="assets/img/banner/symbol-featured.png" alt="symbol" class="img-fluid"> </div>
+        </div>
+    </div>
+    <div class="item-content">
+        <div class="title-ctg">{{item.Category?.name}}</div>
+        <h3 class="short-title"><a  [routerLink]='["/Ad",item._id]'>{{item.Title| strLimit:45}}</a></h3>
+        <h3 class="long-title"><a  [routerLink]='["/Ad",item._id]'>Sport Women's D'Lites Memory Foam Lace-up Sneaker</a></h3>
+        <ul class="upload-info">
+            <li class="date"><i class="fa fa-clock-o" aria-hidden="true"></i>{{API.Gv.Dformat(item.createdAt)}}</li>
+            <li class="place"><i class="fa fa-map-marker" aria-hidden="true"></i>{{item.Location?.name}}</li>
+            <li class="tag-ctg"><i class="fa fa-tag" aria-hidden="true"></i>Clothing</li>
+        </ul>
+        <p>Eimply dummy text of the printing and typesetting industrym has been the industry's standard dummy.</p>
+        <div class="price">{{API.Gv.currencyFormat(item.Price)}}</div>
+        <a  [routerLink]='["/Ad",item._id]' class="product-details-btn">Details</a>
+    </div>
+</div> -->
+  <div class="prod-box" [routerLink]='["/Ad",item._id]' [ngClass]="{'smallBox':BoxType=='small','LargBox':BoxType=='Larg'}">
+    <div class="Img-box">
+      <div class="lds-ring center"><div></div><div></div><div></div><div></div></div>
+      <img [src]="API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')" class="prod-img" />
+    </div>
+    <div class="Info-box">
+      <div class="title-ctg pull-left">{{item.Category?.name}}</div>
+      <div class="price pull-right">{{API.Gv.currencyFormat(item.Price)}}</div>
+
+      <p  class="title pull-left"><a >{{item.Title| strLimit:70}}</a></p>
+      <ul class="upload-info pull-left">
+          <li class="date pull-left"><i class="fa fa-clock-o" aria-hidden="true"></i>{{API.Gv.Dformat(item.createdAt)}}</li>
+          <li class="place pull-left"><i class="fa fa-map-marker" aria-hidden="true"></i>{{item.Location?.name}}</li>
+      </ul>
+      <div class="prod-ctrl pull-left">
+        <button *ngIf="EditBtn" type="button" class="btn btn-primary" name="button" [routerLink]='["/PostAd"]' [queryParams]="{id:item._id}"><img [src]="'assets/img/edit.svg'" /></button>
+        <button *ngIf="deleteBtn" type="button" class="btn btn-danger" name="button" (click)="$event.stopPropagation();OnDelete.emit()"><img [src]="'assets/img/rubbish-bin.svg'" /></button>
+        <button *ngIf="cancelBtn" type="button" class="btn btn-danger" name="button" (click)="$event.stopPropagation();OnCancel.emit()"><img [src]="'assets/img/cancel-music.svg'" /></button>
+      </div>
+    </div>
+  </div>

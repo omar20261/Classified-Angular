@@ -1,0 +1,36 @@
+<section class="search-layout1 bg-body full-width-border-bottom fixed-menu-mt">
+    <div class="container">
+        <form id="cp-search-form">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="form-group search-input-area input-icon-location">
+                        <select id="location" class="select2" [(ngModel)]="search.Location" name="Location" >
+                            <option selected disabled hidden [value]="undefined">Selecte Location</option>
+                            <option *ngFor="let Loca of Locations" value="{{Loca._id}}" (click)="search.Location=Loca._id" >{{Loca.name}}</option>
+                            <option *ngIf="Locations?.length == 0 && !API.Gv.G_Running" disabled >no items yet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="form-group search-input-area input-icon-category" >
+                        <select id="categories" class="select2" [(ngModel)]="search.Category" name="Category">
+                          <option selected disabled hidden [value]="undefined">Selecte Category</option>
+                          <option *ngFor="let catego of Categories" value="{{catego._id}}">{{catego.name}}</option>
+                          <option *ngIf="Categories?.length == 0 && !API.Gv.G_Running" disabled >no items yet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="form-group search-input-area input-icon-keywords">
+                        <input placeholder="Enter Keywords here ..." [(ngModel)]="search.word" name="word" type="text">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 text-right text-left-mb">
+                    <a href="javascript:void(0)" class="cp-search-btn" (click)="GoSeach()">
+                        <i class="fa fa-search" aria-hidden="true"></i>Search
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+.search-Container{position: relative;height: 100%;padding: 0;border-radius: 5px;}
+.form-group{margin-bottom: 0px;}
+/*.suggestionsBox{background: #fff;position: absolute;width: 100%;z-index: 2;border: 1px solid rgba(0, 0, 0, 0.11);border-radius: 5px;}*/
+.suggestionsBox{background: rgb(240, 240, 240);left: 0;top: 100%;position: absolute;width: 100%;z-index: 2;border: 1px solid rgba(34, 71, 200, 0.21);border-radius: 3px;}
+.suggestionsBox tr {background: rgb(240, 240, 240);}
+.suggestionsBox tr td{padding: 3px 5px;font-size: 16px;}
+.suggestionsBox tr:hover{background: rgb(48, 110, 171);color: #fff;}
+.block{display: inline-block !important;width: 100%;}

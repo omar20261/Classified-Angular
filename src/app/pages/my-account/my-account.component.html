@@ -1,0 +1,33 @@
+<app-ads-search [Locations]="[]" [Categories]="[]" ></app-ads-search>
+
+<section class="s-space-bottom-full bg-accent-shadow-body">
+    <div class="container">
+        <div class="breadcrumbs-area">
+            <ul>
+                <li><a [routerLink]='["/"]'>Home</a> -</li>
+                <li class="active">My Account Page</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-12">
+                <div class="gradient-wrapper sidebar-item-box">
+                    <ul class="nav tab-nav my-account-title">
+                        <!-- <li class="nav-item"><a class="active" href="#personal" data-toggle="tab" aria-expanded="false">Personal Information</a></li> -->
+                        <li class="nav-item"><a [ngClass]="{'active':Tab=='profile'}" (click)="Tab='profile'">Profile</a></li>
+                        <li class="nav-item"><a [ngClass]="{'active':Tab=='my-ads'}" (click)="Tab='my-ads'">My Ads</a></li>
+                        <li class="nav-item"><a [ngClass]="{'active':Tab=='fav-ads'}" (click)="Tab='fav-ads'">Favourite Ads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8 col-12">
+                <div class="tab-content my-account-wrapper gradient-wrapper input-layout1">
+                  <app-profile *ngIf="Tab=='profile'" ></app-profile>
+                  <app-my-ads  *ngIf="Tab=='my-ads'"></app-my-ads>
+                  <app-fav-ads  *ngIf="Tab=='fav-ads'"></app-fav-ads>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+.prod-box{display: inline-block; padding: 5px;border: 1px solid rgba(0,0,0,0.1);box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);}
+.prod-img{z-index: 3;padding-right: 5px; min-height: 100%;width: 100%;position: relative;}
+.title{line-height: normal;margin: 10px 0px;width: 100%;font-size: 14px;}
+.Img-box ,.Info-box{width: 50%;float: left;position: relative;}
+.Img-box {/*max-height: 150px;min-height: 100px;*/height: 200px;overflow-y: hidden;}
+.price{color: rgb(191, 164, 13);font-size: 17px;font-weight: bold;}
+.title-ctg{font-size: 13px;color: rgba(0,0,0,0.3)}
+.upload-info li{color: rgba(0,0,0,0.3);}
+.upload-info li i{color: green;margin: 0 5px;}
+.prod-ctrl {width: 100%;margin: 5px;}
+.prod-ctrl button{float: right;margin: 5px;}
+.prod-ctrl img{width: 20px;}
+.smallBox .Img-box,.smallBox .Info-box{width: 100%;}
+
+.LargBox{display: flex;margin: 5px;}
+.LargBox .Img-box {width: 250px;}
+.LargBox .Info-box{width: 50%;-webkit-flex: 1;-ms-flex: 1;margin: 5px;flex: 1;}

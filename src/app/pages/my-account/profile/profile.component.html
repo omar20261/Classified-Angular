@@ -1,0 +1,139 @@
+<div class="gradient-padding show animated fadeIn" id="profile">
+    <h3 class="title-section"> Profile</h3>
+    <div class="public-profile">
+      <!-- =========================== -->
+        <div class="public-profile-item">
+            <div class="public-profile-title">
+                <h4>Avatar</h4>
+            </div>
+            <div class="public-profile-content">
+              <div class="img-div">
+                 <img class="userimg" [src]="API.Gv.ImgPath(item.Image,'assets/img/userImage.png')" alt="" />
+                 <app-img [item]="item" [innerBtn]="true" [name]="'Image'" [accept]="'image/*'" style="position: absolute;right:0;bottom:0;left:0" ></app-img>
+              </div>
+            </div>
+        </div>
+        <!-- =========================== -->
+          <div class="public-profile-item">
+              <div class="public-profile-title">
+                  <h4>First Name</h4>
+              </div>
+              <div class="public-profile-content">
+                <div class="form-group">
+                    <input type="text" id="first-name" class="form-control" placeholder="First Name" [(ngModel)]="item.Fname" name="Fname">
+                </div>
+              </div>
+          </div>
+          <!-- =========================== -->
+            <div class="public-profile-item">
+                <div class="public-profile-title">
+                    <h4>Last Name</h4>
+                </div>
+                <div class="public-profile-content">
+                  <div class="form-group">
+                      <input type="text" id="last-name" class="form-control" placeholder="Last Name" [(ngModel)]="item.Lname" name="Lname">
+                  </div>
+                </div>
+            </div>
+        <!-- =========================== -->
+        <div class="public-profile-item">
+            <div class="public-profile-title">
+                <h4>Account</h4>
+            </div>
+            <div class="public-profile-content">
+              <div class="form-group">
+                  <div class="radio radio-primary radio-inline">
+                      <input type="radio" id="inlineRadio1" value="option1" name="radioInline1" checked="">
+                      <label for="inlineRadio1">Indivisual</label>
+                  </div>
+                  <div class="radio radio-primary radio-inline">
+                      <input type="radio" id="inlineRadio2" value="option2" name="radioInline1">
+                      <label for="inlineRadio2">Business</label>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <!-- =========================== -->
+          <div class="public-profile-item">
+              <div class="public-profile-title">
+                  <h4>Email</h4>
+              </div>
+              <div class="public-profile-content">
+                <div class="form-group">
+                    <input type="text" id="first-name2" class="form-control" placeholder="Enter your e-mail " [(ngModel)]="item.Email" name="Email">
+                </div>
+              </div>
+          </div>
+          <!-- =========================== -->
+            <div class="public-profile-item">
+                <div class="public-profile-title">
+                    <h4>Phone</h4>
+                </div>
+                <div class="public-profile-content">
+                  <div class="form-group">
+                      <input type="text" id="phone" class="form-control" placeholder="Your Phone Number" [(ngModel)]="item.Phone" name="Phone">
+                      <label for="checkbox1" *ngIf="API.Auth.loadUser()?.ActivePhone" style="color:green;font-size: 17px;"><i class="fa fa-check-circle" ></i> Activated</label>
+                      <label for="checkbox1" *ngIf="!API.Auth.loadUser()?.ActivePhone" style="color:red;font-size: 17px;" data-dismiss="modal" data-toggle="modal" data-target="#ActivePhoneModal"><i class="fa fa-times-circle" ></i> not Activated .. Active now ?</label>
+                      <!-- <div class="checkbox checkbox-primary checkbox-circle">
+                          <input id="checkbox1" type="checkbox" checked="">
+                          <label for="checkbox1">Hide the phone number on the published ads.</label>
+                      </div> -->
+                  </div>
+                </div>
+            </div>
+            <!-- =========================== -->
+            <div class="public-profile-item">
+                <div class="public-profile-title">
+                    <h4>Update Profile</h4>
+                </div>
+                <div class="public-profile-content">
+                    <a href="javascript:void(0)" class="cp-default-btn-lg" id="save" (click)="Save()">Save</a>
+                </div>
+            </div>
+
+            <h3 class="title-section"> Change Password</h3>
+
+            <!-- =========================== -->
+              <div class="public-profile-item">
+                  <div class="public-profile-title">
+                      <h4>Current Password</h4>
+                  </div>
+                  <div class="public-profile-content">
+                    <div class="form-group">
+                        <input type="password" id="c-password" class="form-control" placeholder="Type Your Current Password" [(ngModel)]="pass.CurrentPassword" name="CurrentPassword">
+                    </div>
+                  </div>
+              </div>
+              <!-- =========================== -->
+                <div class="public-profile-item">
+                    <div class="public-profile-title">
+                        <h4>New Password</h4>
+                    </div>
+                    <div class="public-profile-content">
+                      <div class="form-group">
+                        <input type="password" id="n-password" class="form-control" placeholder="Type Your new Password" [(ngModel)]="pass.NewPassword" name="NewPassword">
+                      </div>
+                    </div>
+                </div>
+                <!-- =========================== -->
+                  <div class="public-profile-item">
+                      <div class="public-profile-title">
+                          <h4>Confirm Password</h4>
+                      </div>
+                      <div class="public-profile-content">
+                        <div class="form-group">
+                          <input type="password" id="r-password" class="form-control" placeholder="Confirm Your new Password" [(ngModel)]="pass.NewPassword2" name="NewPassword2">
+                        </div>
+                      </div>
+                  </div>
+        <!-- =========================== -->
+        <div class="public-profile-item">
+            <div class="public-profile-title">
+                <h4>Update Profile</h4>
+            </div>
+            <div class="public-profile-content">
+                <a href="javascript:void(0)" class="cp-default-btn-lg" id="save" (click)="changePass()">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>

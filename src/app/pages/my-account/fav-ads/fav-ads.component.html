@@ -1,0 +1,75 @@
+<div class="show animated fadeIn" id="my-add">
+   <div class="row">
+       <div class="col-lg-12">
+           <div class="gradient-wrapper item-mb border-none">
+               <div class="gradient-title">
+                   <div class="row no-gutters">
+                       <div class="col-4 text-center-mb">
+                           <h2 class="mb10--mb">saved List</h2>
+                       </div>
+                       <div class="col-8">
+                           <div class="layout-switcher float-none-mb text-center-mb mb10--mb">
+                               <ul>
+                                   <!-- <li>
+                                       <div class="page-controls-sorting">
+                                           <div class="dropdown">
+                                               <button class="btn sorting-btn dropdown-toggle" type="button" data-toggle="dropdown">Sort By<i class="fa fa-sort" aria-hidden="true"></i></button>
+                                               <ul class="dropdown-menu">
+                                                   <li><a href="javascript:void(0)">Date</a></li>
+                                                   <li><a href="javascript:void(0)">Best Sale</a></li>
+                                                   <li><a href="javascript:void(0)">Rating</a></li>
+                                               </ul>
+                                           </div>
+                                       </div>
+                                   </li> -->
+                                   <li><a href="javascript:void(0)" (click)="BoxType='small'"><i class="fa fa-th-large"></i></a></li>
+                                   <li  class="active"><a (click)="BoxType='Larg'" href="javascript:void(0)"><i class="fa fa-list"></i></a></li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div id="category-view" [ngClass]="{'category-grid-layout2':BoxType=='small','category-list-layout2':BoxType=='Larg'}">
+                   <div class="row">
+                     <h3 *ngIf="items.length == 0 && !API.Gv.G_Running" class="NoItemsFound" >No Items Found</h3>
+                       <div class="col-lg-4 col-md-4 col-sm-6 col-12" *ngFor="let item of items| paginate:{ itemsPerPage: PerPage,id :paginationID, currentPage:currentPage,totalItems:items_count};let i=index;">
+                         <app-product [item]="item" [BoxType]="BoxType" [cancelBtn]="true" (OnCancel)="Remove(i,item._id)"></app-product>
+                           <!-- <div class="product-box item-mb zoom-gallery">
+                               <div class="item-mask-wrapper">
+                                   <div class="item-mask secondary-bg-box">
+                                     <img [src]="API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')" alt="categories" class="img-fluid">
+                                       <div class="trending-sign" [ngClass]="{'active':item.Featured}" data-tips="Featured"> <i class="fa fa-bolt" aria-hidden="true"></i> </div>
+                                       <div class="title-ctg">Clothing</div>
+                                       <ul class="info-link">
+                                           <li><a href="{{API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')}}" class="elv-zoom" data-fancybox-group="gallery" title="{{item.Title| strLimit:45}}"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+                                           <li><a [routerLink]='["/Ad",item._id]'><i class="fa fa-link" aria-hidden="true"></i></a></li>
+                                       </ul>
+                                       <div class="symbol-featured"><img src="assets/img/banner/symbol-featured.png" alt="symbol" class="img-fluid"> </div>
+                                   </div>
+                               </div>
+                               <div class="item-content">
+                                   <div class="title-ctg">Clothing</div>
+                                   <h3 class="short-title"><a [routerLink]='["/Ad",item._id]'>{{item.Title| strLimit:45}}</a></h3>
+                                   <h3 class="long-title"><a [routerLink]='["/Ad",item._id]'>{{item.Title| strLimit:105}}</a></h3>
+                                   <ul class="upload-info">
+                                       <li class="date"><i class="fa fa-clock-o" aria-hidden="true"></i>{{API.Gv.Dformat(item.createdAt)}}</li>
+                                       <li class="place"><i class="fa fa-map-marker" aria-hidden="true"></i>{{item.Location?.name}}</li>
+                                       <li class="tag-ctg"><i class="fa fa-tag" aria-hidden="true"></i>{{item.Category?.name}}</li>
+                                   </ul>
+                                   <p>{{item.Description| strLimit:150}}</p>
+                                   <div class="price">{{API.Gv.currencyFormat(item.Price)}}</div>
+                                   <div class="btn-right btns">
+                                     <a (click)="Remove(i,item._id)"  class="btn btn-danger">Remove</a>
+                                   </div>
+                               </div>
+                           </div> -->
+                       </div>
+
+                   </div>
+               </div>
+           </div>
+           <div class="gradient-wrapper mb-60" *ngIf="items_count > PerPage" >  <pagination-controls id="API_paginate" (pageChange)="PageChanged($event)"></pagination-controls> </div>
+
+       </div>
+   </div>
+</div>

@@ -1,0 +1,199 @@
+<!-- Header Area Start Here -->
+    <header style="display: inline-block;">
+        <div id="header-three" class="header-style3 header-fixed bg-body">
+            <div class="header-top-bar top-bar-style3">
+                <div class="container">
+                    <div class="row no-gutters">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="top-bar-left">
+                                <a [routerLink]='["/PostAd"]' class="cp-default-btn d-lg-none">Post Your Ad</a>
+                                <p class="d-none d-lg-block">
+                                    <i class="fa fa-life-ring" aria-hidden="true"></i>Have any questions? +088 199990 or mail@classipost
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="top-bar-right">
+                                <ul>
+                                  <li *ngIf="!AuthS.loggedIn()" >
+                                      <button type="button" class="login-btn" data-toggle="modal" data-target="#LoginModal" style="float: left;">
+                                          <i class="fa fa-sign-in" aria-hidden="true" style="padding: 2px 5px;font-size: 17px;"></i>Login
+                                      </button>
+                                      <i  aria-hidden="true" style="float: left;font-size: 16px;color: white;">/ </i>
+                                      <button type="button" class="login-btn" data-toggle="modal" data-target="#RegisterModal" style="float: left;">
+                                        <i class="fa fa-user-plus" aria-hidden="true" style="padding: 2px 5px;font-size: 17px;"></i>Register
+                                      </button>
+
+                                  </li>
+
+                                  <li *ngIf="AuthS.loggedIn()" >
+                                    <button type="button" class="login-btn" [routerLink]='["/Profile"]'>
+                                        <i class="fa fa-user" aria-hidden="true"></i>Profile
+                                    </button>
+                                  </li>
+                                  <li *ngIf="AuthS.loggedIn()" >
+                                    <button type="button" class="login-btn" (click)="AuthS.logout()">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                                    </button>
+                                  </li>
+                                    <!-- <li class="hidden-mb">
+                                        <a class="login-btn" href="#" id="login-button">
+                                            <i class="fa fa-comments-o" aria-hidden="true"></i>Live Chat
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-area" id="sticker">
+                <div class="container">
+                    <div class="row no-gutters d-flex align-items-center">
+                        <div class="col-lg-2 col-md-2 col-sm-3">
+                            <div class="logo-area">
+                                <a [routerLink]='["/"]' class="img-fluid"><img src="assets/img/logo-dark.png" alt="logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-6 possition-static">
+                            <div class="cp-main-menu">
+                                <nav>
+                                    <ul>
+                                        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]='["/"]' >Home</a>
+                                            <!-- <ul class="cp-dropdown-menu">
+                                                <li><a href="index.html">Home 1</a></li>
+                                                <li><a href="index2.html">Home 2</a></li>
+                                                <li><a href="index3.html">Home 3</a></li>
+                                                <li class="active"><a href="index4.html">Home 4</a></li>
+                                            </ul> -->
+                                         </li>
+                                        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]='["/About"]' >Who We Are</a></li>
+                                        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a  [routerLink]='["/HowItWorks"]' >How It Works?</a></li>
+                                        <!-- <li class="menu-justify current"><a href="#">Pages</a>
+                                            <div class="rt-dropdown-mega container">
+                                                <div class="rt-dropdown-inner">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <ul class="rt-mega-items">
+                                                                <li><a href="index.html">Home 1</a></li>
+                                                                <li><a href="index2.html">Home 2</a></li>
+                                                                <li><a href="index3.html">Home 3</a></li>
+                                                                <li><a href="index4.html">Home 4</a></li>
+                                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <ul class="rt-mega-items">
+                                                                <li><a href="category-grid-layout1.html">Grid View 1</a></li>
+                                                                <li><a href="category-grid-layout2.html">Grid View 2</a></li>
+                                                                <li><a href="category-grid-layout3.html">Grid View 3</a></li>
+                                                                <li><a href="category-list-layout1.html">List View 1</a></li>
+                                                                <li><a href="category-list-layout2.html">List View 2</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <ul class="rt-mega-items">
+                                                                <li><a href="category-list-layout3.html">List View 3</a></li>
+                                                                <li><a href="single-product-layout1.html">Product Details 1</a></li>
+                                                                <li><a href="single-product-layout2.html">Product Details 2</a></li>
+                                                                <li><a href="single-product-layout3.html">Product Details 3</a></li>
+                                                                <li><a href="favourite-ad-list.html">Favourite Ad</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <ul class="rt-mega-items">
+                                                                <li><a href="my-account.html">My Account</a></li>
+                                                                <li><a href="login.html">Login</a></li>
+                                                                <li><a [routerLink]='["/PostAd"]' >Post Ad</a></li>
+                                                                <li><a href="report-abuse.html" data-toggle="modal" data-target="#report_abuse">Report Abuse</a></li>
+                                                                <li><a href="faq.html">Faq</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><a href="category-grid-layout1.html">Features</a></li> -->
+                                        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]='["/Contact"]'>Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 text-right">
+                            <a [routerLink]='["/PostAd"]' class="cp-default-btn">Post Your Ad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Area Start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul>
+                                    <li><a href="#">Home</a>
+                                        <ul>
+                                            <li><a href="index.html">Home 1</a></li>
+                                            <li><a href="index2.html">Home 2</a></li>
+                                            <li><a href="index3.html">Home 3</a></li>
+                                            <li><a href="index4.html">Home 4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">Who We Are</a></li>
+                                    <li><a href="how-it-works.html">How It Works?</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul>
+                                            <li><a href="pricing.html">Pricing Plan</a></li>
+                                            <li><a href="category-grid-layout1.html">Grid View 1</a></li>
+                                            <li><a href="category-grid-layout2.html">Grid View 2</a></li>
+                                            <li><a href="category-grid-layout3.html">Grid View 3</a></li>
+                                            <li><a href="category-list-layout1.html">List View 1</a></li>
+                                            <li><a href="category-list-layout2.html">List View 2</a></li>
+                                            <li><a href="category-list-layout3.html">List View 3</a></li>
+                                            <li><a href="single-product-layout1.html">Product Details 1</a></li>
+                                            <li><a href="single-product-layout2.html">Product Details 2</a></li>
+                                            <li><a href="single-product-layout3.html">Product Details 3</a></li>
+                                            <li><a href="favourite-ad-list.html">Favourite Ad</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a [routerLink]='["/PostAd"]' >Post Ad</a></li>
+                                            <li><a href="report-abuse.html" data-toggle="modal" data-target="#report_abuse">Report Abuse</a></li>
+                                            <li><a href="faq.html">Faq</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="category-grid-layout1.html">Features</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Area End -->
+    </header>
+    <!-- Header Area End Here -->
+
+<!-- <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="javascript:void(0)"><i class="fa fa-bars"></i> </a>
+                <form role="search" class="navbar-form-custom" method="post" action="javascript:void(0)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    </div>
+                </form>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="javascript:void(0)" (click)="AuthS.logout()">
+                        <i class="fa fa-sign-out"  ></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </div> -->

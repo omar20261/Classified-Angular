@@ -1,0 +1,227 @@
+<section class="bg-accent fixed-menu-mt featured-product-area item-pb">
+            <div class="container">
+                <div class="row featured-product-inner-area zoom-gallery">
+                    <div class="order-xl-2 order-lg-2 col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12 mb--sm">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" placeholder="What You Are Looking For . . ." [(ngModel)]="search" name="search" >
+                            <span class="input-group-addon">
+                              <button type="submit" (click)="GoSeach()">
+                                    <span class="fa fa-search"></span>
+                              </button>
+                            </span>
+                        </div>
+                        <div class="section-title-left-dark title-bar mt-20 mb-40">
+                            <h2>Featured Product</h2>
+                        </div>
+                        <div class="cp-carousel nav-control-top category-grid-layout2">
+                          <owl-carousel *ngIf="Fitems" [options]="FeaturedOWL" [carouselClasses]="['owl-carousel','owl-theme']">
+                            <app-product *ngFor="let item of Fitems;let i =index;" [item]="item" [BoxType]="'small'"></app-product>
+                            <!-- <div class="product-box item-mb zoom-gallery" *ngFor="let item of Fitems;let i =index;">
+                                <div class="item-mask-wrapper">
+                                    <div class="item-mask bg-body"><img [src]="API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')" class="img-fluid prod-img">
+                                        <div class="trending-sign" > <i class="fa fa-bolt" aria-hidden="true"></i> </div>
+                                        <div class="title-ctg">{{item.Category?.name}}</div>
+                                        <ul class="info-link">
+                                            <li><a href="{{API.Gv.ImgPath(item.Images[0],'assets/img/product/product20.png')}}" class="elv-zoom" title="{{item.Title| strLimit:45}}"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+                                            <li><a [routerLink]='["/Ad",item._id]' ><i class="fa fa-link" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        <div class="symbol-featured"><img src="assets/img/banner/symbol-featured.png" alt="symbol" class="img-fluid"> </div>
+                                    </div>
+                                </div>
+                                <div class="item-content">
+                                    <div class="title-ctg">Clothing</div>
+                                    <h3 class="short-title"><a [routerLink]='["/Ad",item._id]'>{{item.Title| strLimit:45}}</a></h3>
+                                    <h3 class="long-title"><a [routerLink]='["/Ad",item._id]'>Foldable Waterproof Carry Storage Bag with Zipper</a></h3>
+                                    <ul class="upload-info">
+                                        <li class="date"><i class="fa fa-clock-o" aria-hidden="true"></i>{{API.Gv.Dformat(item.createdAt)}}</li>
+                                        <li class="place"><i class="fa fa-map-marker" aria-hidden="true"></i>{{item.Location?.name}}</li>
+                                        <li class="tag-ctg"><i class="fa fa-tag" aria-hidden="true"></i>{{item.Category?.name}}</li>
+                                    </ul>
+                                    <p>Eimply dummy text of the printing and typesetting industrym has been the industry's standard dummy.</p>
+                                    <div class="price">{{API.Gv.currencyFormat(item.Price)}}</div>
+                                    <a [routerLink]='["/Ad",item._id]' class="product-details-btn">Details</a>
+                                </div>
+                            </div> -->
+                          </owl-carousel>
+                          <p *ngIf="Fitems?.length == 0" class="NoItemsFound" style="margin: 0;padding: 10px;">No Items Found</p>
+                        </div>
+
+                    </div>
+                    <div class="order-xl-1 order-lg-1 col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="category-menu-layout2 bg-body">
+                            <h3>Categories</h3>
+                            <ul class="sidebar-category-list">
+                                <li *ngFor="let item of Categories">
+                                    <a [routerLink]='["/Ads"]' [queryParams]="{Category:item._id,'label':item.name}" ><img [src]="API.Gv.ImgPath(item.Icon,'assets/img/product/ctg1.png')" alt="category" class="img-fluid">{{item.name}}<span *ngIf="item.ads">( {{item.ads}} )</span></a>
+                                </li>
+                                <li *ngIf="Categories?.length == 0">
+                                  <p class="NoItemsFound" style="margin: 0;padding: 10px;">no items found</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Area End Here -->
+        <!-- Add Area Start Here -->
+      <section class="bg-accent">
+          <div class="container">
+              <div class="row no-gutters text-center-mb">
+                  <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="add-layout1-left d-flex align-items-center justify-content-center">
+                          <h2>Do you Have Something To Sell?</h2>
+                      </div>
+                  </div>
+                  <div class="col-xl-5 col-lg-8 col-md-8 col-sm-6 col-12">
+                      <div class="add-layout1-middle d-flex align-items-center justify-content-center text-center--md">
+                          <h3>Post your ad on classipost.com</h3>
+                      </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                      <div class="add-layout1-right d-flex align-items-center justify-content-center">
+                          <a [routerLink]='["/PostAd"]'  class="cp-default-btn-sm">Post Your Ad Now!</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Add Area End Here -->
+      <!-- Products Area Start Here -->
+      <section class="bg-accent s-space-custom4">
+          <div class="container">
+              <div class="section-title-left-dark title-bar mb-40">
+                  <h2>Recently Added</h2>
+              </div>
+              <div class="row category-grid-layout2 zoom-gallery">
+                  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let item of items">
+                      <app-product [item]="item" [BoxType]="'small'"></app-product>
+                  </div>
+                  <p *ngIf="items?.length == 0" class="NoItemsFound" style="margin: 0;padding: 10px;width: 100%;">No Items Found</p>
+              </div>
+          </div>
+      </section>
+      <!-- Products Area End Here -->
+      <!-- Pricing Plan Area Start Here -->
+      <section class="bg-body s-space-default">
+          <div class="container">
+              <div class="section-title-dark">
+                  <h2>Start Earning From Things You Don’t Need Anymore</h2>
+                  <p>It’s very Simple to choose pricing &amp; Plan</p>
+              </div>
+              <div class="row d-md-flex">
+                  <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                      <div class="pricing-box bg-box">
+                          <div class="plan-title">Free Post</div>
+                          <div class="price">
+                              <span class="currency">$</span>0
+                              <span class="duration">/ Per mo</span>
+                          </div>
+                          <h3 class="title-bold-dark size-xl">Always FREE Ad Posting</h3>
+                          <p>Post as many ads as you like for 30 days without limitations and 100% FREE SUBMIT AD</p>
+                          <a href="#" class="cp-default-btn-lg">Submit Ad</a>
+                      </div>
+                  </div>
+                  <div class="d-flex align-items-center col-lg-2 col-md-12 col-sm-12 col-12">
+                      <div class="other-option bg-primary">or</div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                      <div class="pricing-box bg-box">
+                          <div class="plan-title">Premium Post</div>
+                          <div class="price">
+                              <span class="currency">$</span>19
+                              <span class="duration">/ Per mo</span>
+                          </div>
+                          <h3 class="title-bold-dark size-xl">Featured Ad Posting</h3>
+                          <p>Post as many ads as you like for 30 days without limitations and 100% FREE SUBMIT AD</p>
+                          <a href="#" class="cp-default-btn-lg">Submit Ad</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Pricing Plan Area End Here -->
+      <!-- Counter Area Start Here -->
+      <section class="overlay-default s-space-equal overflow-hidden" style="background-image: url('assets/img/banner/counter-back1.jpg');">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                      <div class="d-md-flex justify-md-content-center counter-box text-center--md">
+                          <div>
+                              <img src="assets/img/banner/counter1.png" alt="counter" class="img-fluid mb20-auto--md">
+                          </div>
+                          <div>
+                              <div class="counter counter-title" data-num="100000">1,00,000</div>
+                              <h3 class="title-regular-light">Our Products</h3>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                      <div class="d-md-flex justify-md-content-center counter-box text-center--md">
+                          <div>
+                              <img src="assets/img/banner/counter2.png" alt="counter" class="img-fluid mb20-auto--md">
+                          </div>
+                          <div>
+                              <div class="counter counter-title" data-num="500000">5,00,000</div>
+                              <h3 class="title-regular-light">Our Happy Buyers</h3>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                      <div class="d-md-flex justify-md-content-center counter-box text-center--md">
+                          <div>
+                              <img src="assets/img/banner/counter3.png" alt="counter" class="img-fluid mb20-auto--md">
+                          </div>
+                          <div>
+                              <div class="counter counter-title" data-num="200000">2,00,000</div>
+                              <h3 class="title-regular-light">Verified Users</h3>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Counter Area End Here -->
+      <!-- Selling Process Area Start Here -->
+      <section class="bg-accent s-space-regular">
+          <div class="container">
+              <div class="section-title-dark">
+                  <h2>How To Start Selling Your Products</h2>
+                  <p>It’s very simple to choose pricing &amp; level of exposure on pricing page</p>
+              </div>
+              <ul class="process-area">
+                  <li>
+                      <img src="assets/img/banner/process1.png" alt="process" class="img-fluid">
+                      <h3>Upload Your Products</h3>
+                      <p> Bmply dummy text of the printing and typesing industrypsum been the induse.</p>
+                  </li>
+                  <li>
+                      <img src="assets/img/banner/process2.png" alt="process" class="img-fluid">
+                      <h3>Set Your Price</h3>
+                      <p> Bmply dummy text of the printing and typesing industrypsum been the induse.</p>
+                  </li>
+                  <li>
+                      <img src="assets/img/banner/process3.png" alt="process" class="img-fluid">
+                      <h3>Start Your Business</h3>
+                      <p> Bmply dummy text of the printing and typesing industrypsum been the induse.</p>
+                  </li>
+              </ul>
+          </div>
+      </section>
+      <!-- Selling Process Area End Here -->
+      <!-- Subscribe Area Start Here -->
+      <section class="bg-body s-space full-width-border-top">
+          <div class="container">
+              <div class="section-title-dark">
+                  <h2 class="size-sm">Receive The Best Offers</h2>
+                  <p>Stay in touch with Classified Ads Wordpress Theme and we'll notify you about best ads</p>
+              </div>
+              <div class="input-group subscribe-area">
+                  <input type="text" placeholder="Type your e-mail address" class="form-control">
+                  <span class="input-group-addon">
+                      <button type="submit" class="cp-default-btn-xl">Subscribe</button>
+                  </span>
+              </div>
+          </div>
+      </section>
+      <!-- Subscribe Area End Here -->
