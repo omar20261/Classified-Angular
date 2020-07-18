@@ -30,7 +30,7 @@
     "angular2-social-login": "^3.1.1",
     "core-js": "^2.5.4",
     "currency-formatter": "^1.4.3",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "moment": "^2.22.2",
     "ng2-currency-mask": "^5.3.1",
     "ng2-pagination": "^2.0.2",
