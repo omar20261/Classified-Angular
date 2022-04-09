@@ -31,7 +31,7 @@
     "core-js": "^2.5.4",
     "currency-formatter": "^1.4.3",
     "lodash": "^4.17.10",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "ng2-currency-mask": "^5.3.1",
     "ng2-pagination": "^2.0.2",
     "ngx-owl-carousel": "^2.0.7",
